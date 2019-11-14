@@ -44,7 +44,7 @@ $("#submit").on("click", function RenderOutput(event) {
             console.log(lon);
 
             $.ajax({
-                    url: "http://api.openweathermap.org/data/2.5/uvi?appid=166a433c57516f51dfab1f7edaed8413&lat=" + lat + "&lon=" + lon,
+                    url: "https://api.openweathermap.org/data/2.5/uvi?appid=166a433c57516f51dfab1f7edaed8413&lat=" + lat + "&lon=" + lon,
                     method: "GET"
                 })
                 .then(function(response) {
