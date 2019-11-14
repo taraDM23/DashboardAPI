@@ -1,12 +1,28 @@
+//Store Location
+var cityArray = [];
+init()
+
 //On click event that runs dashboard
 $("#submit").on("click", function RenderOutput(event) {
     event.preventDefault();
+
+    var cityText = $("#addCity").val();
+    if (cityText === "") {
+        return;
+    }
+    cityArray.push(cityText);
+    store();
+    RenderLocation();
+
 
     //Variable that combines the api url/key and the the objects
     var APIKey = "166a433c57516f51dfab1f7edaed8413";
     let location = $("#addCity").val();
     var queryURLCurrent = "https://api.openweathermap.org/data/2.5/weather?q=" + location + ",AU&units=imperial&appid=" + APIKey;
     var queryURLNext = "https://api.openweathermap.org/data/2.5/forecast?q=" + location + ",AU&units=imperial&appid=" + APIKey;
+
+
+
 
     //JS code that will get the current location and todays weather
     $.ajax({
@@ -34,7 +50,7 @@ $("#submit").on("click", function RenderOutput(event) {
 
             //Show weather icon
             var icon = response.weather[0].icon;
-            var iconURL = "http://openweathermap.org/img/w/" + icon + ".png";
+            var iconURL = "https://openweathermap.org/img/w/" + icon + ".png";
             $("#iconCurrent").attr('src', iconURL);
 
             //Get UV index value 
@@ -61,20 +77,48 @@ $("#submit").on("click", function RenderOutput(event) {
             method: "GET"
         })
         .then(function(response) {
-            console.log(queryURLNext);
             console.log(response);
             console.log(location)
-
-            var tempFuture = Math.round((response.list.main.temp - 32) * 5 / 9);
-            $("#tempFuture").text(" Temperature: " + tempFuture + "°(C)");
-            var dateFuture = response.list.dt
-            $("#dateFuture").text(dateFuture);
-            var humidityfuture = response.list.main.humidity;
-            $("#humidityFuture").text(" Humidity: " + humidityfuture);
-
+            var forecastArray = response.list
+            for (i = 0; i < forecastArray.length; i++) {
+                var dt = forecastArray[i].dt;
+                var time = dt
+                console.log(dt + "chips")
+                time = time % (24 * 60 * 60 * 1000);
+                time = Math.floor(time / (60 * 60 * 1000));
+                console.log(time + "potato")
+                if (time == 12) {
+                    console.log("tomato")
+                    console.log(((new Date() + getTime() / 1000) + 1))
+                }
+            }
         })
 
 })
+
+
+
+//save to local storage
+function init() {
+    var storedCity = JSON.parse(localStorage.getItem("city"));
+    if (storedCity !== null) {
+        cityArray = storedCity;
+    }
+}
+
+function store() {
+    localStorage.setItem("city", JSON.stringify(cityArray));
+}
+
+function RenderLocation() {
+    for (var i = 0; i < cityArray.length; i++) {
+        //create a li element 
+        var currentItem = cityArray[i];
+        var li = document.createElement("li");
+        li.textContent = currentItem;
+        document.querySelector("#searchHistory").appendChild(li);
+    }
+}
 
 //date
 var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -100,20 +144,11 @@ var year = d.getFullYear();
 
 
 
-
 /* * Include a 5-Day Forecast below the current weather conditions. 
 Each day for the 5-Day Forecast should display the following:
 
-  * Date
-
-  * Icon image (visual representation of weather conditions)
-
-  * Temperature
-
-  * Humidity
+  * Date * Icon image* Temperature* Humidity
  */
-
-
 
 
 /*  * Include a search history so that users can access their past 
