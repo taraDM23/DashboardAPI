@@ -15,32 +15,44 @@
 <body>
     <div class="container" id=dashboard>
         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                <nav class="nav flex-column navbar navbar-light bg-light">
-                    <form class="form-inline">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search" id="addCity" aria-label="Search">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="submit">Search</button>
-                        <div class=list id=searchHistory></div>
-                    </form>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <nav class="nav flex-column navbar navbar-light" id="header">
+                    Weather Dashboard
                 </nav>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
-                <div class="card bg-dark text-white">
-                    <img src="C:\Users\Tara\Desktop\Send to REPO\DashboardAPI\assets\cloud-wallpapers-for-computers.png" class="card-img" alt="...">
-                    <div class="card-img-overlay" id="TodayWeather">
-                        <h5 class="card-title" id="cityName"></h5>
-                        <p class="card-text" id="dateCurrent"></p>
-                        <p class="card-text" id="temp"></p>
-                        <p class="card-text" id="humidity"></p>
-                        <p class="card-text" id="wind"></p>
-                        <p class="card-text" id="UV"></p>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+                <h5> Search for a city </h5>
+                <form class="form-inline">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" id="addCity" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="submit"><i class="fas fa-search"></i></button>
+                </form>
+                <div class=list id=searchHistory></div>
+            </div>
+            <br>
+
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-8">
+                <div class="card-container" id="TodayWeather">
+                    <h5 class="card-title" id="cityName"></h5>
+                    <img src="" id="iconCurrent" class="card-img" alt="">
+                    <p class="card-text" id="dateCurrent"></p>
+                    <p class="card-text" id="temp"></p>
+                    <p class="card-text" id="humidity"></p>
+                    <p class="card-text" id="wind"></p>
+                    <p class="card-text" id="UV"></p>
+                </div>
+                <br>
+                <br>
+                <div class="container" id="forecast">
+                    <div id="dayAfter">
+                        <p class="card-text" id="dateFuture"></p>
+                        <p class="card-text" id="tempFuture"></p>
+                        <p class="card-text" id="humidityFuture"></p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    </div>
-    </div>
+
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>

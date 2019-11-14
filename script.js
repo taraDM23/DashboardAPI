@@ -1,5 +1,5 @@
 //On click event that runs dashboard
-$("#submit").on("click", function(event) {
+$("#submit").on("click", function RenderOutput(event) {
     event.preventDefault();
 
     //Variable that combines the api url/key and the the objects
@@ -27,12 +27,15 @@ $("#submit").on("click", function(event) {
             $("#dateCurrent").text(dateCurrent);
             //show humidity 
             var Humidity = response.main.humidity;
-            $("#humidity").text(" Humidity: " + Humidity);
+            $("#humidity").text(" Humidity: " + Humidity + "%");
             //show wind speed
             var wind = response.wind.speed;
             $("#wind").text(" Wind Speed: " + wind + "m/s");
 
             //Show weather icon
+            var icon = response.weather[0].icon;
+            var iconURL = "http://openweathermap.org/img/w/" + icon + ".png";
+            $("#iconCurrent").attr('src', iconURL);
 
             //Get UV index value 
             var lat = response.coord.lat;
@@ -62,15 +65,12 @@ $("#submit").on("click", function(event) {
             console.log(response);
             console.log(location)
 
-            /* 
-
-    var tempC = Math.round((response.main.temp - 32) * 5 / 9);
-    $("#temp").text(" Temperature: " + tempC + "°(C)");
-    console.log(tempC)
-    var dateCurrent = (dayName + " " + dayNum + "th " + month + " " + year);
-    $("#dateCurrent").text(dateCurrent);
-    var Humidity = response.main.humidity;
-    $("#humidity").text(" Humidity: " + Humidity); */
+            var tempFuture = Math.round((response.list.main.temp - 32) * 5 / 9);
+            $("#tempFuture").text(" Temperature: " + tempFuture + "°(C)");
+            var dateFuture = response.list.dt
+            $("#dateFuture").text(dateFuture);
+            var humidityfuture = response.list.main.humidity;
+            $("#humidityFuture").text(" Humidity: " + humidityfuture);
 
         })
 
