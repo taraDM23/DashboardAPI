@@ -17,9 +17,19 @@ body {
 }
 
 #dayAfter {
+    border-radius: 15px;
+    background-color: white;
+    text-align: center;
+}
+
+.forecast-day {
     border: solid black 1px;
     border-radius: 15px;
-    background-color: whitesmoke;
+    width: 140px;
+    float: left;
+    margin-left: 2px;
+    padding-top: 2px;
+    background: #2196F3
 }
 
 #TodayWeather {
@@ -33,6 +43,7 @@ body {
 
 #addCity {
     border-right: none;
+    display: inline;
 }
 
 form.form-inline button {
@@ -60,4 +71,13 @@ form.form-inline button:hover {
     .mx-sm-2 {
         margin-right: 0px !important;
     }
+}
+
+footer {
+    position: fixed;
+    background-color: navy;
+    padding: 15px;
+    width: 100%;
+    color: oldlace;
+    text-align: center;
 }

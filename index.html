@@ -13,13 +13,13 @@
 </head>
 
 <body>
+    <nav class="nav flex-column navbar navbar-light" id="header">
+        Weather Dashboard
+    </nav>
+
     <div class="container" id=dashboard>
         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <nav class="nav flex-column navbar navbar-light" id="header">
-                    Weather Dashboard
-                </nav>
-            </div>
+
             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
                 <h5> Search for a city </h5>
                 <form class="form-inline">
@@ -42,8 +42,7 @@
                     <br>
                 </div>
                 <br>
-                <br>
-                <div class="container" id="forecast">
+                <div class="card-container" id="forecast">
                     <div id="dayAfter">
                         <p class="card-text" id="dateFuture"></p>
                         <p class="card-text" id="tempFuture"></p>
@@ -52,7 +51,11 @@
             </div>
         </div>
     </div>
-
+    <br>
+    <br>
+    <footer>
+        <p> Class Activity</p>
+    </footer>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
