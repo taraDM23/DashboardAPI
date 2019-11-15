@@ -16,7 +16,7 @@ $("#submit").on("click", function RenderOutput(event) {
 
 
     //Variable that combines the api url/key and the the objects
-    var APIKey = "166a433c57516f51dfab1f7edaed8413";
+    var APIKey = "3c15afb4ab1a2a58e37adedc416048b5";
     let location = $("#addCity").val();
     var queryURLCurrent = "https://api.openweathermap.org/data/2.5/weather?q=" + location + ",AU&units=imperial&appid=" + APIKey;
     var queryURLNext = "https://api.openweathermap.org/data/2.5/forecast?q=" + location + ",AU&units=imperial&appid=" + APIKey;
@@ -80,21 +80,36 @@ $("#submit").on("click", function RenderOutput(event) {
             console.log(response);
             console.log(location)
             var forecastArray = response.list
+            console.log(forecastArray.length)
+            var ts = (Math.round((new Date()).getTime() / 1000) + 1);
+            console.log(ts);
+
+
+
             for (i = 0; i < forecastArray.length; i++) {
                 var dt = forecastArray[i].dt;
-                var time = dt
-                console.log(dt + "chips")
-                time = time % (24 * 60 * 60 * 1000);
-                time = Math.floor(time / (60 * 60 * 1000));
-                console.log(time + "potato")
-                if (time == 12) {
-                    console.log("tomato")
-                    console.log(((new Date() + getTime() / 1000) + 1))
-                }
-            }
-        })
+                console.log(dt)
+                for (dt = (ts + 75600); dt < dt; dt++) {
 
+                    var forecastTemp = ("|| Temperature: " + (Math.round((forecastArray[i].main.temp - 32) * 5 / 9)) +
+                        " ||");
+                    console.log(forecastTemp)
+                    var forecastHumid = ("Humidity: " + forecastArray[i].main.humidity);
+                    console.log(forecastHumid)
+                    var forecastIcon = forecastArray[i].weather[0].icon;
+                    var forecastIconURL = "https://openweathermap.org/img/w/" + forecastIcon + ".png";
+                    console.log(forecastIconURL)
+
+                    var resultsDiv = $("<div>");
+                    resultsDiv.append(dt, forecastTemp, forecastHumid);
+                    $("#dayAfter").append(resultsDiv);
+
+                }
+            } /*     */
+        })
 })
+
+
 
 
 
@@ -142,13 +157,6 @@ var month = month[d.getMonth()];
 var dayNum = d.getDate();
 var year = d.getFullYear();
 
-
-
-/* * Include a 5-Day Forecast below the current weather conditions. 
-Each day for the 5-Day Forecast should display the following:
-
-  * Date * Icon image* Temperature* Humidity
- */
 
 
 /*  * Include a search history so that users can access their past 
