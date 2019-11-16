@@ -73,11 +73,11 @@ form.form-inline button:hover {
     }
 }
 
-footer {
-    position: fixed;
-    background-color: navy;
-    padding: 15px;
-    width: 100%;
-    color: oldlace;
-    text-align: center;
+.btn {
+
+}
+
+#searchHistory{
+
+    
 }
