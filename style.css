@@ -18,23 +18,21 @@ body {
 
 #dayAfter {
     border-radius: 15px;
-    background-color: white;
     text-align: center;
 }
 
 .forecast-day {
     border: solid black 1px;
-    border-radius: 15px;
     width: 140px;
+    color: oldlace;
     float: left;
     margin-left: 2px;
     padding-top: 2px;
-    background: #2196F3
+    background: navy;
 }
 
 #TodayWeather {
     border: solid navy 1px;
-    border-radius: 15px;
     background-color: white;
     text-align: center;
     padding: 6px;
@@ -74,10 +72,21 @@ form.form-inline button:hover {
 }
 
 .btn {
+display: block;
+border-top:1px solid darkgray;;
+text-align: center;
+margin-left: 2px;
+border-radius: 0px;
+width: 100%;
+cursor: pointer;
+}
+
+#inputOutput {
+border: solid navy 1px;
+background-color: white;
+text-align: center;
+margin-top: 17px;
+padding-top:7px;
 
 }
 
-#searchHistory{
-
-    
-}

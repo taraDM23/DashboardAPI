@@ -20,13 +20,16 @@
     <div class="container" id=dashboard>
         <div class="row">
 
-            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4" id="inputOutput" >
                 <h5> Search for a city </h5>
                 <form class="form-inline">
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" id="addCity" aria-label="Search">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="submit"><i class="fas fa-search"></i></button>
                 </form>
-                <div class=list id=searchHistory></div>
+                <br>
+                <div class=container id=searchHistory>
+                <h5>Past Searches</h5>
+                </div>
             </div>
             <br>
 
@@ -44,8 +47,8 @@
                 <br>
                 <div class="card-container" id="forecast">
                     <div id="dayAfter">
-                        <p class="card-text" id="dateFuture"></p>
-                        <p class="card-text" id="tempFuture"></p>
+                     <h5>5 day forecast</h5>
+                
                     </div>
                 </div>
             </div>
